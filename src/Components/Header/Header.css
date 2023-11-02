@@ -189,6 +189,9 @@
   }
 }
 @media (max-width: 768px) {
+  .header-logo {
+    font-size: 27px;
+  }
   .header-basic-contain {
     gap: 30px;
   }
@@ -201,11 +204,14 @@
   .head-search-btn {
     width: 70px;
   }
-  .menu-checkbox-contain{
+  .menu-checkbox-contain {
     scale: 0.9;
   }
 }
 @media (max-width: 600px) {
+  .header-logo {
+    font-size: 25px;
+  }
   .head-search-contain {
     gap: 0;
   }
@@ -250,7 +256,7 @@
   .head-res-search-input::placeholder {
     font-size: 13px;
   }
-  .menu-checkbox-contain{
+  .menu-checkbox-contain {
     scale: 0.8;
   }
 }

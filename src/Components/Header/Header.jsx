@@ -12,18 +12,22 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalContext";
 
 export const Header = () => {
-  const [search, setSearch] = useState("");
+  const { searchValue, setSearchValue, setPage } = useContext(GlobalContext);
+  const [search, setSearch] = useState(() => {
+    const search = JSON.parse(localStorage.getItem("search"))
+    return search || ""
+  });
   const [checked, setChecked] = useState(false);
   const [searchCheck, setSearchCheck] = useState(false);
   const [matches, setMatches] = useState(
     window.matchMedia("(max-width: 320px)").matches
   );
   const checkedRef = useRef(null);
-  const { setSearchValue } = useContext(GlobalContext);
 
   //  Search Input & Button Control
   const SearchBtn = () => {
     setSearchValue(search);
+    setPage(1);
   };
 
   const EnterBtn = (e) => {
@@ -40,12 +44,15 @@ export const Header = () => {
   };
 
   useEffect(() => {
+    localStorage.setItem("search", JSON.stringify(search));
+  }, [search]);
+
+  useEffect(() => {
     const handler = (e) => setMatches(e.matches);
     const mediaQuery = window.matchMedia("(max-width: 320px)");
 
     mediaQuery.addEventListener("change", handler);
 
-    console.log(matches);
     return () => {
       mediaQuery.removeEventListener("change", handler);
     };
@@ -113,12 +120,14 @@ export const Header = () => {
             type="text"
             placeholder="Search"
             className="head-search-input"
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <input
             type="text"
             placeholder="Search"
             className="head-res-search-input"
+            value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             style={
               searchCheck

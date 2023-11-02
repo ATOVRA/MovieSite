@@ -5,7 +5,6 @@ import "../App.css"
 import { Outlet } from "react-router-dom";
 
 // Hooks
-import { useContext } from "react";
 
 // Components
 import { Header } from "../Components/Header/Header";

@@ -9,15 +9,8 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalContext";
 
 export const Home = () => {
-  const { searchValue } = useContext(GlobalContext);
-  const [page, setPage] = useState(() => {
-    const page = JSON.parse(localStorage.getItem("page"));
-    return page || 1;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("page", JSON.stringify(page));
-  }, [page]);
+  const { searchValue, page, setPage } = useContext(GlobalContext);
+  
 
   // useFetch Api
   const {
@@ -52,38 +45,50 @@ export const Home = () => {
   } else {
     document.body.style.overflow = "auto";
   }
-  return (
-    <div className="home-container">
-      {loader && <h1 className="Loader-text">Loading...</h1>}
-      {error && <h1 className="Error-text">{error}</h1>}
-      {searchResults && <div className="home-page-pointer">Page: {page}</div>}
-      {!searchResults && discover && (
-        <div className="home-page-pointer">Page: {page}</div>
-      )}
-      <div className="home-movie-contain">
-        {(searchValue.length > 0 ? searchResults : discover)?.map((item) => (
-          <div className="movie-card" key={item.id}>
-            <div className="card-image-div">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                className="mc-image"
-                alt="#"
-              />
-            </div>
-            <div className="mc-info-contain">
-              <h2 className="mc-card-heading">{item.title}</h2>
-              <p className="mc-card-release-date">{item.release_date}</p>
-            </div>
-          </div>
-        ))}
-      </div>
 
-      {discover && (
-        <div className="change-page-contain">
-          <button onClick={(e) => PrevPage(e)}>Prev</button>
-          <button onClick={NextPage}>Next</button>
+  return (
+      <div className="home-container">
+        {loader && <h1 className="Loader-text">Loading...</h1>}
+        {error && <h1 className="Error-text">{error}</h1>}
+        {searchResults && <div className="home-page-pointer">Page: {page}</div>}
+        {!searchResults && discover && (
+          <div className="home-page-pointer">Page: {page}</div>
+        )}
+        <div className="home-movie-contain">
+          {(searchValue.length > 0 ? searchResults : discover)?.map((item) => (
+            <div className="movie-card" key={item.id}>
+              <div className="card-image-div">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                  className="mc-image"
+                  alt="#"
+                />
+              </div>
+              <div className="mc-info-contain">
+                <h2
+                  className="mc-card-heading"
+                  // style={
+                  //   item.title.length >= 40
+                  //     ? { fontSize: "14px" }
+                  //     : { }
+                  // }
+                >
+                  {item.title.length >= 40
+                    ? item.title.substring(0, 40) + "..."
+                    : item.title}
+                </h2>
+                <p className="mc-card-release-date">{item.release_date}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      )}
-    </div>
+
+        {discover && (
+          <div className="change-page-contain">
+            <button onClick={(e) => PrevPage(e)}>Prev</button>
+            <button onClick={NextPage}>Next</button>
+          </div>
+        )}
+      </div>
   );
 };

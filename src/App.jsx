@@ -5,7 +5,7 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Layouts
 import { RootLayout } from "./Layouts/RootLayout";
@@ -35,10 +35,28 @@ function App() {
     },
   ]);
 
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState(() => {
+    const searchValue = JSON.parse(localStorage.getItem("searchValue"))
+    return searchValue || ""
+  });
+
+  useEffect(() => {
+    localStorage.setItem("searchValue", JSON.stringify(searchValue));
+  }, [searchValue]);
+
+  const [page, setPage] = useState(() => {
+    const page = JSON.parse(localStorage.getItem("page"));
+    return page || 1;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("page", JSON.stringify(page));
+  }, [page]);
 
   return (
-    <GlobalContext.Provider value={{searchValue, setSearchValue}}>
+    <GlobalContext.Provider
+      value={{ searchValue, setSearchValue, page, setPage }}
+    >
       <div className="App">
         <RouterProvider router={routes} />
       </div>
