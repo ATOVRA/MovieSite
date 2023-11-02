@@ -1,0 +1,20 @@
+:root {
+  --basic-yellow: #f3ce13;
+  --basic-black: #010203;
+  --basic-font: sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: var(--basic-black);
+}
+.App {
+  width: 100%;
+}
+.site-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
