@@ -7,24 +7,6 @@
   padding: 40px 0;
   /* border: 2px solid red; */
 }
-.Loader-text {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: var(--basic-yellow);
-  font-family: var(--basic-font);
-  text-align: center;
-  font-size: 45px;
-  padding: 20% 0;
-}
-.Error-text {
-  color: var(--basic-yellow);
-  font-family: var(--basic-font);
-  text-align: center;
-  font-size: 45px;
-}
 .home-page-pointer {
   font-size: 19px;
   font-weight: 600;
@@ -67,6 +49,9 @@
 }
 .mc-card-heading {
   font-size: 17px;
+}
+.mc-card-heading a {
+  text-decoration: none;
   color: var(--basic-yellow);
   font-family: var(--basic-font);
 }
@@ -99,9 +84,12 @@
 
 /* Home Page Media Query */
 @media (max-width: 900px) {
-    .home-container {
-        padding-top: 30px;
-      }
+  .home-container {
+    padding-top: 30px;
+  }
+  .Loader-text {
+    padding: 30% 0;
+  }
   .movie-card {
     width: 170px;
   }
@@ -125,6 +113,9 @@
   .home-container {
     padding-top: 30px;
   }
+  .Loader-text {
+    padding: 45% 0;
+  }
   .home-movie-contain {
     gap: 25px;
   }
@@ -145,6 +136,12 @@
   .home-container {
     padding-top: 20px;
   }
+  .Loader-text {
+    padding: 55% 0;
+  }
+  .Error-text {
+    font-size: 40px;
+  }
   .home-movie-contain {
     gap: 20px;
   }
@@ -160,10 +157,22 @@
     width: 120px;
   }
 }
+@media (max-width: 480px) {
+  .Loader-text {
+    padding: 70% 0;
+  }
+}
 @media (max-width: 375px) {
   .home-container {
     padding-top: 15px;
     padding-bottom: 20px;
+  }
+  .Loader-text {
+    padding: 75% 0;
+    font-size: 35px;
+  }
+  .Error-text {
+    font-size: 35px;
   }
   .home-page-pointer {
     font-size: 15px;

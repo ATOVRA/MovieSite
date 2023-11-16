@@ -14,8 +14,8 @@ import { GlobalContext } from "../../Context/GlobalContext";
 export const Header = () => {
   const { searchValue, setSearchValue, setPage } = useContext(GlobalContext);
   const [search, setSearch] = useState(() => {
-    const search = JSON.parse(localStorage.getItem("search"))
-    return search || ""
+    const search = JSON.parse(localStorage.getItem("search"));
+    return search || "";
   });
   const [checked, setChecked] = useState(false);
   const [searchCheck, setSearchCheck] = useState(false);
@@ -31,8 +31,10 @@ export const Header = () => {
   };
 
   const EnterBtn = (e) => {
-    if (e.keyCode === 13) {
-      setSearchValue(search);
+    const newSearchValue = e.target.value || ""
+    if (e.keyCode === 13 ) {
+      setSearchValue(newSearchValue);
+      setPage(1);
     }
   };
 
@@ -79,12 +81,13 @@ export const Header = () => {
       setSearchCheck(false);
     }
   };
+
   useEffect(() => {
-    window.addEventListener("keypress", EnterBtn);
+    window.addEventListener("keyup", EnterBtn);
     window.addEventListener("click", handleClick);
 
     return () => {
-      window.removeEventListener("keypress", EnterBtn);
+      window.removeEventListener("keydown", EnterBtn);
       window.removeEventListener("click", handleClick);
     };
   }, []);
@@ -105,7 +108,7 @@ export const Header = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="discover">Discover</NavLink>
+              <NavLink to="/discover">Discover</NavLink>
             </li>
             <li>
               <NavLink>Contact</NavLink>
@@ -151,7 +154,6 @@ export const Header = () => {
           </button>
         </div>
 
-        {/* Responsive Menu Bar */}
         <div
           className="menu-checkbox-contain"
           style={

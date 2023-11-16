@@ -14,7 +14,7 @@ export const useFetch = (url) => {
           throw new Error("Not Found!");
         }
         const data = await req.json();
-        setData(data.results);
+        setData(data.results || data);
       } catch (err) {
         setError(err.message);
       } finally {
