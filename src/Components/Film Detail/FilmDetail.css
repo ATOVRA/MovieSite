@@ -317,3 +317,28 @@
     gap: 15px;
   }
 }
+@media (max-width: 380px) {
+  .film-facts {
+    flex-direction: column;
+    align-items: start;
+    align-self: self-start;
+    padding-left: 10px;
+  }
+  .film-genres {
+    margin-left: 0;
+  }
+  .film-release,
+  .film-genres {
+    padding-right: 0;
+  }
+  .film-release::before {
+    display: none;
+  }
+  .film-genres::before {
+    display: none;
+  }
+  /* .film-actions{
+    display: grid;
+    grid-template-columns: auto auto;
+  } */
+}

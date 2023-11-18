@@ -9,16 +9,22 @@ import { useFetch } from "../../Hooks/useFetch";
 import { useContext, useEffect, useState } from "react";
 
 // Packages
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ApexChart from "../ApexChart/ApexChart";
 
 // Context
 import { GlobalContext } from "../../Context/GlobalContext";
 
+// Utils
+import { FilmLike } from "../../Utils/FilmLike";
+import { FilmSave } from "../../Utils/FilmSave";
+
 export const FilmDetail = () => {
   const { id } = useParams();
   const { setSeires } = useContext(GlobalContext);
   const [trailerModal, setTrailerModal] = useState(false);
+  const { filmLike, handleLike } = FilmLike(id);
+  const { filmSave, handleSave } = FilmSave(id);
 
   const handleModal = () => {
     setTrailerModal(!trailerModal);
@@ -147,10 +153,18 @@ export const FilmDetail = () => {
                   User <br /> Score
                 </p>
               </div>
-              <div className="film-like-btn">
+              <div
+                className="film-like-btn"
+                onClick={handleLike}
+                style={filmLike ? { color: "red" } : { color: "white" }}
+              >
                 <FaHeart />
               </div>
-              <div className="film-watchlist">
+              <div
+                className="film-watchlist"
+                onClick={handleSave}
+                style={filmSave ? { color: "#f3ce13" } : { color: "white" }}
+              >
                 <FaBookmark />
               </div>
               <div className="film-trailer-video" onClick={handleModal}>

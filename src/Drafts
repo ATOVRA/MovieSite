@@ -1,8 +1,0 @@
-
-// https://image.tmdb.org/t/p/w500
-  // https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=d63c21b2bc442fb1f13183027f8e7523
-
-  {/* {searchResults && <div className="home-page-pointer">Page: {page}</div>}
-      {!searchResults && discover && (
-        <div className="home-page-pointer">Page: {page}</div>
-      )} */}
