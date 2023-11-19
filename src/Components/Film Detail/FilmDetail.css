@@ -11,11 +11,11 @@
   padding: 50px 0;
 }
 .trailer-modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(1, 1, 1, 0.7);
+  background-color: rgba(1, 1, 1, 0.85);
   z-index: 99;
   display: none;
   align-items: center;
@@ -111,6 +111,12 @@
   gap: 25px;
   margin-top: 15px;
 }
+.responsive-film-actions {
+  display: none;
+  align-items: center;
+  gap: 30px;
+  margin-top: 15px;
+}
 .film-score-chart-div {
   display: flex;
   align-items: center;
@@ -144,9 +150,9 @@
   gap: 7px;
   color: #fff;
   cursor: pointer;
+  font-size: 17px;
 }
 .film-trailer-video p {
-  font-size: 17px;
   font-weight: 600;
 }
 .film-overview {
@@ -163,7 +169,26 @@
   font-size: 14px;
   font-weight: 500;
 }
+.responsive-actions-contain {
+  width: 100%;
+  height: 50px;
+  background-color: #1e212a;
+  position: fixed;
+  bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
 @media (max-width: 900px) {
+  .trailer-modal-video {
+    width: 500px;
+    height: 280px;
+  }
+  .trailer-modal-cancel {
+    top: 50px;
+    right: 70px;
+  }
   .film-poster {
     width: 350px;
     height: 400px;
@@ -228,6 +253,15 @@
   }
 }
 @media (max-width: 600px) {
+  .trailer-modal-video {
+    width: 360px;
+    height: 200px;
+  }
+  .trailer-modal-cancel {
+    top: 50px;
+    right: 30px;
+    font-size: 30px;
+  }
   .film-detail-contain {
     padding: 30px 0;
   }
@@ -276,6 +310,16 @@
   }
 }
 @media (max-width: 480px) {
+  .trailer-modal-video {
+    width: 330px;
+    height: 180px;
+    margin-top: -100px;
+  }
+  .trailer-modal-cancel {
+    top: 50px;
+    right: 30px;
+    font-size: 30px;
+  }
   .film-poster {
     height: 250px;
     padding: 5px;
@@ -318,6 +362,15 @@
   }
 }
 @media (max-width: 380px) {
+  .trailer-modal-video {
+    width: 300px;
+    height: 170px;
+  }
+  .trailer-modal-cancel {
+    top: 30px;
+    right: 20px;
+    font-size: 27px;
+  }
   .film-facts {
     flex-direction: column;
     align-items: start;
@@ -337,8 +390,22 @@
   .film-genres::before {
     display: none;
   }
-  /* .film-actions{
-    display: grid;
-    grid-template-columns: auto auto;
-  } */
+  .film-actions {
+    display: none;
+  }
+  .responsive-film-actions {
+    display: flex;
+  }
+  .film-like-btn,
+  .film-watchlist {
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
+  }
+  .film-trailer-video {
+    font-size: 14px;
+  }
+  .responsive-actions-contain {
+    display: flex;
+  }
 }

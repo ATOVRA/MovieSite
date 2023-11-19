@@ -3,6 +3,12 @@ import { createContext, useEffect, useState } from "react";
 export const GlobalContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+  // Header Search Input Value
+  const [search, setSearch] = useState(() => {
+    const search = JSON.parse(localStorage.getItem("search"));
+    return search || "";
+  });
+  
   // Film Search Values
   const [searchValue, setSearchValue] = useState(() => {
     const searchValue = JSON.parse(localStorage.getItem("searchValue"));
@@ -28,7 +34,7 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ searchValue, setSearchValue, page, setPage, series, setSeires }}
+      value={{ search, setSearch, searchValue, setSearchValue, page, setPage, series, setSeires }}
     >
       {children}
     </GlobalContext.Provider>

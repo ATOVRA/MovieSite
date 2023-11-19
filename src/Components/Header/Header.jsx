@@ -12,11 +12,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalContext";
 
 export const Header = () => {
-  const { searchValue, setSearchValue, setPage } = useContext(GlobalContext);
-  const [search, setSearch] = useState(() => {
-    const search = JSON.parse(localStorage.getItem("search"));
-    return search || "";
-  });
+  const { search, setSearch, searchValue, setSearchValue, setPage } = useContext(GlobalContext);
   const [checked, setChecked] = useState(false);
   const [searchCheck, setSearchCheck] = useState(false);
   const [matches, setMatches] = useState(
