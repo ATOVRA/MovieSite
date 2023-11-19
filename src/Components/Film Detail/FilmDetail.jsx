@@ -50,7 +50,7 @@ export const FilmDetail = () => {
       localStorage.setItem("page_id", JSON.stringify(id))
     }
 
-    return id
+    return url
   });
 
   useEffect(() => {
