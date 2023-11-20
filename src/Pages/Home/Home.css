@@ -71,6 +71,7 @@
   height: inherit;
   font-size: 22px;
   font-weight: 600;
+  color: var(--basic-black);
   cursor: pointer;
   border: none;
   outline: none;

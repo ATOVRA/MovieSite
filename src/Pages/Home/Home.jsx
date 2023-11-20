@@ -16,7 +16,7 @@ import { SearchFilms } from "../../Components/SearchFilms/SearchFilms";
 export const Home = () => {
   const { searchValue, page, setPage } = useContext(GlobalContext);
 
-  // useFetch Api
+  // useFetch API
   const {
     data: discover,
     error,

@@ -40,22 +40,7 @@ export const FilmDetail = () => {
   }
   
   // Film Trailer Videos
-  const { data: videos } = useFetch(() => {
-    const storedId = JSON.parse(localStorage.getItem("page_id"))
-    const targetId = storedId || id
-    
-    const url = `https://api.themoviedb.org/3/movie/${targetId}/videos?api_key=d63c21b2bc442fb1f13183027f8e7523`
-
-    if(storedId && storedId !== id){
-      localStorage.setItem("page_id", JSON.stringify(id))
-    }
-
-    return url
-  });
-
-  useEffect(() => {
-    localStorage.setItem("page_id", JSON.stringify(id))
-  }, [id])
+  const { data: videos } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=d63c21b2bc442fb1f13183027f8e7523`);
 
   const TrailerVideo = () => {
     if (videos && videos.length > 0) {
